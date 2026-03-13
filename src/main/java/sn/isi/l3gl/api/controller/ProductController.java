@@ -1,6 +1,5 @@
 package sn.isi.l3gl.api.controller;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import sn.isi.l3gl.core.domain.Product;
 import sn.isi.l3gl.core.service.ProductService;
@@ -9,9 +8,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-@RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
